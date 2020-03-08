@@ -14,11 +14,15 @@ import com.example.itunestabbedbrowser.viewmodel.MusicViewModel
 import com.google.android.material.tabs.TabLayout
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
+class MainActivity : AppCompatActivity() {
 
     private val TAG = MainActivity::class.java.simpleName
 
     val musicAdapter : MusicAdapter by lazy { MusicAdapter() }
+
+    var selectedTab : String = "Rock"
+
+    var musicViewModel : MusicViewModel? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,7 +31,7 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
         recycler_view.layoutManager = LinearLayoutManager(this)
         recycler_view.adapter = musicAdapter
 
-        val musicViewModel = ViewModelProvider(
+        musicViewModel = ViewModelProvider(
             this,
             object : ViewModelProvider.Factory{
                 override fun <T : ViewModel?> create(modelClass: Class<T>): T {
@@ -41,17 +45,30 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
             override fun onTabUnselected(p0: TabLayout.Tab?) { }
             override fun onTabSelected(p0: TabLayout.Tab?) {
                 when(p0!!.position){
-                    0 -> populateRockMusic(musicViewModel)
-                    1 -> populateClassicMusic(musicViewModel)
-                    2 -> populatePopMusic(musicViewModel)
+                    0 -> {populateRockMusic(musicViewModel!!)
+                    selectedTab = "Rock"}
+                    1 -> {populateClassicMusic(musicViewModel!!)
+                    selectedTab = "Classic"}
+                    2 -> {populatePopMusic(musicViewModel!!)
+                selectedTab = "Pop"}
                     else->{ }
                 }
             }
         })
 
-        populateRockMusic(musicViewModel)
-        musicAdapter.dataSet = musicViewModel.getClassicDataset().value
-        musicViewModel.getMusic()
+        swipe_refresh.setOnRefreshListener {
+            Log.d(TAG, "onRefresh() executed")
+            when (selectedTab) {
+                "Rock" -> populateRockMusic(musicViewModel!!)
+                "Classic" -> populateClassicMusic(musicViewModel!!)
+                "Pop" -> populatePopMusic(musicViewModel!!)
+                else -> {}
+            }
+            Log.d(TAG, "onRefresh() executed, " + selectedTab)
+        }
+        populateRockMusic(musicViewModel!!)
+        musicAdapter.dataSet = musicViewModel!!.getClassicDataset().value
+        musicViewModel!!.getMusic()
     }
 
     private fun populateRockMusic(musicViewModel : MusicViewModel){
@@ -84,10 +101,4 @@ class MainActivity : AppCompatActivity(), SwipeRefreshLayout.OnRefreshListener {
                 }
             })
     }
-
-    override fun onRefresh() {
-        TODO("Not yet implemented")
-    }
-
-
 }
