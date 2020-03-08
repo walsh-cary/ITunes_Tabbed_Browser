@@ -24,13 +24,13 @@ class MusicAdapter : RecyclerView.Adapter<MusicViewHolder>() {
         )
 
     override fun getItemCount(): Int {
-        Log.d(TAG, "getItemCount() executed: " + dataSet?.data?.size)
-        return dataSet?.data?.size ?: 0
+        Log.d(TAG, "getItemCount() executed: " + dataSet?.results?.size)
+        return dataSet?.results?.size ?: 0
     }
 
     override fun onBindViewHolder(holder: MusicViewHolder, position: Int) {
-        Log.d(TAG, "onBindViewHolder() executed: " + dataSet?.data?.get(position))
-        dataSet?.data?.get(position)?.let {
+        Log.d(TAG, "onBindViewHolder() executed: " + dataSet?.results?.get(position))
+        dataSet?.results?.get(position)?.let {
             holder.onBind(it)
         }
     }

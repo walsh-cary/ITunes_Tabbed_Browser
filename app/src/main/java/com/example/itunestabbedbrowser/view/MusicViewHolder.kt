@@ -1,5 +1,7 @@
 package com.example.itunestabbedbrowser.view
 
+import android.content.Intent
+import android.net.Uri
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
@@ -23,5 +25,15 @@ class MusicViewHolder (itemView: View)
         tvTrackPrice.text = item.trackPrice.toString()
         Glide.with(itemView).load(item.artworkUrl60).into(ivCover)
         tvTrackName.text = item.trackName
+
+        itemView.setOnClickListener(
+            object : View.OnClickListener{
+                override fun onClick(v: View?) {
+                    val intent : Intent = Intent(android.content.Intent.ACTION_VIEW)
+                    intent.setDataAndType(Uri.parse(item.previewUrl), "audio/*")
+                    itemView.context.startActivity(intent)
+                }
+            }
+        )
     }
 }

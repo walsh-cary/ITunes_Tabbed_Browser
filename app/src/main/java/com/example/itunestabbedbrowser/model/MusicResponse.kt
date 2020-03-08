@@ -1,6 +1,6 @@
 package com.example.itunestabbedbrowser.model
 
-data class MusicResponse(var resultCount: Int = 0, var data: List<MusicPoko>? = null)
+data class MusicResponse(var resultCount: Int = 0, var results: List<MusicPoko>? = null)
 
 data class MusicPoko (
     var artistName: String = "no data",

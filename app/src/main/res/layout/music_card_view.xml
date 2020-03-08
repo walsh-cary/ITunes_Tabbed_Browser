@@ -11,14 +11,12 @@
         android:layout_height="match_parent">
 
         <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:padding="5dp"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
-            android:id="@+id/iv_cover"
-            android:layout_margin="20dp"/>
+            android:id="@+id/iv_cover" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -28,23 +26,24 @@
             app:layout_constraintStart_toEndOf="@id/iv_cover"
             android:text="@string/sweet_sweet_o_sweet"
             app:layout_constraintEnd_toStartOf="@id/tv_price"
-            app:layout_constraintHorizontal_bias="0"
             android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            app:layout_constraintHorizontal_bias="0"
             android:textStyle="bold"
-            android:maxWidth="250dp"/>
+            android:maxWidth="225dp"
+            android:layout_marginLeft="10dp"/>
 
         <TextView
             android:id="@+id/tv_collection_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="b;ljawersdkljf"
-            android:textAppearance="@style/TextAppearance.AppCompat.Large"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@id/iv_cover"
             app:layout_constraintTop_toBottomOf="@id/tv_track_name"
             app:layout_constraintEnd_toStartOf="@id/tv_price"
             app:layout_constraintHorizontal_bias="0"
-            android:maxWidth="250dp"/>
+            android:maxWidth="225dp"
+            android:layout_marginLeft="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
@@ -54,7 +53,8 @@
             app:layout_constraintStart_toEndOf="@id/iv_cover"
             android:text="blablahuehue"
             app:layout_constraintEnd_toStartOf="@id/tv_price"
-            app:layout_constraintHorizontal_bias="0"/>
+            app:layout_constraintHorizontal_bias="0"
+            android:layout_marginLeft="10dp"/>
 
         <TextView
             android:layout_width="wrap_content"
