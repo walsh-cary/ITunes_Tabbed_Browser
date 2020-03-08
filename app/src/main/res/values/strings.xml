@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">ITunes Tabbed Browser</string>
+    <string name="rock">Rock</string>
+    <string name="classic">Classic</string>
+    <string name="pop">Pop</string>
+    <string name="sweet_sweet_o_sweet">sweet sweet o\'sweet</string>
+</resources>

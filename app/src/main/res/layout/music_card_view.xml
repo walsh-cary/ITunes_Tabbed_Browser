@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardElevation="0dp"
+    android:layout_margin="10dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:padding="5dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/iv_cover"
+            android:layout_margin="20dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_track_name"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iv_cover"
+            android:text="@string/sweet_sweet_o_sweet"
+            app:layout_constraintEnd_toStartOf="@id/tv_price"
+            app:layout_constraintHorizontal_bias="0"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            android:maxWidth="250dp"/>
+
+        <TextView
+            android:id="@+id/tv_collection_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="b;ljawersdkljf"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@id/iv_cover"
+            app:layout_constraintTop_toBottomOf="@id/tv_track_name"
+            app:layout_constraintEnd_toStartOf="@id/tv_price"
+            app:layout_constraintHorizontal_bias="0"
+            android:maxWidth="250dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_artist_name"
+            app:layout_constraintTop_toBottomOf="@id/tv_collection_name"
+            app:layout_constraintStart_toEndOf="@id/iv_cover"
+            android:text="blablahuehue"
+            app:layout_constraintEnd_toStartOf="@id/tv_price"
+            app:layout_constraintHorizontal_bias="0"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/tv_price"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:text="$14.45"
+            android:layout_marginRight="10dp"
+            android:textSize="25sp"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

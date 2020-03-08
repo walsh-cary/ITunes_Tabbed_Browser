@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.appcompat.widget.LinearLayoutCompat
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_genres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@android:color/holo_orange_light">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_rock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_rock_black_24dp"
+            android:text="@string/rock"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_classic"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_classic_black_24dp"
+            android:text="@string/classic"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tab_pop"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/ic_pop_black_24dp"
+            android:text="@string/pop"/>
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:background="@color/colorAccent"/>
+
+</androidx.appcompat.widget.LinearLayoutCompat>
