@@ -65,10 +65,12 @@ class MainActivity : AppCompatActivity() {
                 else -> {}
             }
             Log.d(TAG, "onRefresh() executed, " + selectedTab)
+            swipe_refresh.isRefreshing = false
         }
+        Log.d(TAG, "after onRefresh() not executed")
         populateRockMusic(musicViewModel!!)
         musicAdapter.dataSet = musicViewModel!!.getClassicDataset().value
-        musicViewModel!!.getMusic()
+        musicViewModel!!.getMusic(this)
     }
 
     private fun populateRockMusic(musicViewModel : MusicViewModel){

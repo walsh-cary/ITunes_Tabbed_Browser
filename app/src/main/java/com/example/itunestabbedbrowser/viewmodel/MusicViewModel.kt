@@ -1,10 +1,12 @@
 package com.example.itunestabbedbrowser.viewmodel
 
+import android.content.Context
 import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.example.itunestabbedbrowser.model.MusicApi
+import com.example.itunestabbedbrowser.model.MusicRepository
 import com.example.itunestabbedbrowser.model.MusicResponse
 import com.example.itunestabbedbrowser.model.Network
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -32,10 +34,10 @@ class MusicViewModel (val baseUrl: String) : ViewModel() {
         return popDataSet
     }
 
-    fun getMusic(){
+    fun getMusic(context: Context){
         Log.d(TAG, "getMusic() executed")
-        val network = Network(this)
-        network.initRetrofit(baseUrl)
+        val musicRepository = MusicRepository(this)
+        musicRepository.getMusic(baseUrl, context)
     }
 
     fun getRockMusicData(dataSet : MusicResponse){

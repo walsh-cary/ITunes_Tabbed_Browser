@@ -2,6 +2,7 @@ package com.example.itunestabbedbrowser.model
 
 import android.util.Log
 import com.example.itunestabbedbrowser.viewmodel.MusicViewModel
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -10,9 +11,9 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class Network(val viewModel : MusicViewModel){
     private val TAG = Network::class.java.simpleName
-    fun initRetrofit(baseUrl: String) {
+    fun initRetrofit(baseUrl: String, okHttpClient: OkHttpClient) {
         Log.d(TAG, "initRetrofit() executed")
-        getApi(baseUrl).getRock()
+        getApi(baseUrl, okHttpClient).getRock()
             .enqueue(
                 object : Callback<MusicResponse>{
                     override fun onFailure(call: Call<MusicResponse>, t: Throwable) {
@@ -27,7 +28,7 @@ class Network(val viewModel : MusicViewModel){
                     }
                 }
             )
-        getApi(baseUrl).getClassic()
+        getApi(baseUrl, okHttpClient).getClassic()
             .enqueue(
                 object : Callback<MusicResponse>{
                     override fun onFailure(call: Call<MusicResponse>, t: Throwable) {
@@ -43,7 +44,7 @@ class Network(val viewModel : MusicViewModel){
                 }
             )
 
-        getApi(baseUrl).getPop()
+        getApi(baseUrl, okHttpClient).getPop()
             .enqueue(
                 object : Callback<MusicResponse>{
                     override fun onFailure(call: Call<MusicResponse>, t: Throwable) {
@@ -59,11 +60,10 @@ class Network(val viewModel : MusicViewModel){
             )
     }
 
-    fun getApi(url: String) : MusicApi {
-        return Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .baseUrl(url)
-            .build()
-            .create(MusicApi::class.java)
+    fun getApi(url: String, okHttpClient: OkHttpClient): MusicApi {
+
+        return Retrofit.Builder().addConverterFactory(GsonConverterFactory.create())
+            .baseUrl(url).client(okHttpClient)
+            .build().create(MusicApi::class.java)
     }
 }
